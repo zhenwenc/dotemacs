@@ -62,13 +62,13 @@
 (global-set-key (kbd "C-e")             'move-end-of-line)
 
 (global-set-key (kbd "C-d")             'backward-char)
-(global-set-key (kbd "M-d")             'backward-word)
+; (global-set-key (kbd "M-d")             'backward-word)
 
-(global-set-key (kbd "S-<return>")      'start-newline-next)
+(global-set-key (kbd "M-<return>")      'start-newline-next)
 
 (global-set-key (kbd "M-<backspace>")   'backward-kill-line)
-(global-set-key (kbd "M-k")             'kill-whole-line)
-(global-set-key (kbd "C-j")             'delete-char)
+(global-set-key (kbd "C-S-k")             'kill-whole-line)
+; (global-set-key (kbd "C-j")             'delete-char)
 
 (global-set-key (kbd "M-<down>")        'scroll-up-command)
 (global-set-key (kbd "M-<up>")          'scroll-down-command)
@@ -76,13 +76,16 @@
 (global-set-key (kbd "C-S-v")           'scroll-down-command)
 
 (global-set-key (kbd "M-x")             'helm-M-x)
-(global-set-key (kbd "M-b")             'helm-mini)
 (global-set-key (kbd "M-O")             'helm-find-files)
 (global-set-key (kbd "M-o")             'helm-projectile-find-file)
 (global-set-key (kbd "M-P")             'helm-projectile-switch-project)
 (global-set-key (kbd "M-y")             'helm-show-kill-ring)
+(global-set-key (kbd "C-x b")           'helm-mini)
 
 (global-set-key (kbd "C-S-s")           'helm-projectile-ag)
+
+;; Split selections into lines
+(global-set-key (kbd "M-S-l")           'load-library)
 
 ;; Isearch mode
 (define-key isearch-mode-map (kbd "M-v")           'isearch-yank-pop)
