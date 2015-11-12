@@ -81,6 +81,7 @@
           (go-mode            . "melpa-stable")
           (rainbow-delimiters . "melpa-stable")
           (flycheck           . "melpa-stable")
+          (ensime             . "melpa-stable")
           (helm               . "melpa")
           (helm-projectile    . "melpa")
           (projectile         . "melpa"))))

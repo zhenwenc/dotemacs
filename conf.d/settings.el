@@ -99,6 +99,13 @@
 
 ;; Company Mode
 (add-hook 'after-init-hook 'global-company-mode)
+(with-eval-after-load 'company
+  (dolist (map (list company-active-map company-search-map company-filter-map))
+    (define-key map (kbd "C-n") 'company-select-next)
+    (define-key map (kbd "C-p") 'company-select-previous)
+    (define-key map (kbd "C-h") 'company-show-doc-buffer)
+    (define-key map (kbd "C-w") nil)))
+
 (require 'company)
 (setq company-tooltip-limit 10) ; bigger popup window
 (setq company-idle-delay 0)    ; decrease delay before autocompletion popup shows

@@ -61,7 +61,7 @@
 (global-set-key (kbd "C-a")             'move-beginning-of-line)
 (global-set-key (kbd "C-e")             'move-end-of-line)
 
-(global-set-key (kbd "C-d")             'backward-char)
+; (global-set-key (kbd "C-d")             'backward-char)
 ; (global-set-key (kbd "M-d")             'backward-word)
 
 (global-set-key (kbd "M-<return>")      'start-newline-next)
@@ -85,8 +85,9 @@
 (global-set-key (kbd "C-S-s")           'helm-projectile-ag)
 
 ;; Split selections into lines
-(global-set-key (kbd "M-S-l")           'load-library)
+; (global-set-key (kbd "M-S-l")           'load-library)
 
 ;; Isearch mode
+(global-set-key (kbd "C-s")                        'isearch-forward-regexp)
 (define-key isearch-mode-map (kbd "M-v")           'isearch-yank-pop)
 (define-key isearch-mode-map (kbd "M-<backspace>") 'isearch-delete-char)
