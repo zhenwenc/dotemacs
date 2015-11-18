@@ -8,16 +8,16 @@
 ;  (setq evil-default-cursor t)
 
 ;; Setting fonts for GUI emacs
-(if (and (eq system-type 'gnu/linux) (display-graphic-p))
-    (progn
-      (set-face-attribute
-       'default nil :font "Source Code Pro Bold 9")))
+;; (if (and (eq system-type 'gnu/linux) (display-graphic-p))
+;;    (progn
+;;      (set-face-attribute 'default nil :font "Source Code Pro Bold 9")))
 
-(dolist (charset '(kana han symbol cjk-misc bopomofo))
-  (set-fontset-font (frame-parameter nil 'font)
-                    charset
-                    (font-spec :family "WenQuanYi Micro Hei Mono Light"
-                               :size 14)))
+;; Chinese character
+;; (dolist (charset '(kana han symbol cjk-misc bopomofo))
+;;   (set-fontset-font (frame-parameter nil 'font)
+;;                     charset
+;;                     (font-spec :family "WenQuanYi Micro Hei Mono Light"
+;;                                :size 14)))
 
 ;; Save backups in ./auto-save-list
 (defvar my-backup-dir (concat temporary-file-directory "emacs-backup"))

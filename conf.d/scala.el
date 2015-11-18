@@ -43,9 +43,9 @@
 ;;         (t
 ;;          (insert ".")
 ;;          (company-complete))))
-
-(with-eval-after-load 'ensime
-  (define-key ensime-mode-map (kbd ".") 'scala/completing-dot))
+;; 
+;; (with-eval-after-load 'ensime
+;;   (define-key ensime-mode-map (kbd ".") 'scala/completing-dot))
 
 (define-key ensime-mode-map (kbd "M-.") 'ensime-edit-definition)
 (define-key ensime-mode-map (kbd "M-,") 'pop-tag-mark)
