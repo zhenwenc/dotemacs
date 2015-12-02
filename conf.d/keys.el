@@ -82,12 +82,13 @@
 (global-set-key (kbd "M-y")             'helm-show-kill-ring)
 (global-set-key (kbd "C-x b")           'helm-mini)
 
+(global-set-key (kbd "C-s")             'helm-occur)
 (global-set-key (kbd "C-S-s")           'helm-projectile-ag)
 
 ;; Split selections into lines
 ; (global-set-key (kbd "M-S-l")           'load-library)
 
 ;; Isearch mode
-(global-set-key (kbd "C-s")                        'isearch-forward-regexp)
+;; (global-set-key (kbd "C-s")                        'isearch-forward-regexp)
 (define-key isearch-mode-map (kbd "M-v")           'isearch-yank-pop)
 (define-key isearch-mode-map (kbd "M-<backspace>") 'isearch-delete-char)

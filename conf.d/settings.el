@@ -12,6 +12,10 @@
 ;;    (progn
 ;;      (set-face-attribute 'default nil :font "Source Code Pro Bold 9")))
 
+(if (and (eq system-type 'darwin) (display-graphic-p))
+   (progn
+     (set-face-attribute 'default nil :font "Menlo")))
+
 ;; Chinese character
 ;; (dolist (charset '(kana han symbol cjk-misc bopomofo))
 ;;   (set-fontset-font (frame-parameter nil 'font)
