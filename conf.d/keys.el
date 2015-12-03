@@ -46,7 +46,8 @@
 (global-set-key (kbd "A-<backspace>")   'backward-kill-word)
 
 (global-set-key (kbd "M-w")             'delete-window)
-(global-set-key (kbd "M-z")             'undo)
+(global-set-key (kbd "M-z")             'undo-tree-undo)
+(global-set-key (kbd "M-Z")             'undo-tree-redo)
 (global-set-key (kbd "M-s")             'save-buffer)
 (global-set-key (kbd "M-c")             'kill-ring-save)
 (global-set-key (kbd "M-v")             'yank)

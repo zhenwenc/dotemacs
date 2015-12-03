@@ -3,7 +3,7 @@
   (exec-path-from-shell-initialize))
 
 ;; Color theme
-(load-theme 'sanityinc-tomorrow-eighties t)
+(load-theme 'atom-one-dark t)
 
 ;  (setq evil-default-cursor t)
 
