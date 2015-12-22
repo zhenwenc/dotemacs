@@ -63,6 +63,7 @@
     ack
     scala-mode2
     ensime
+    smartparens
     sbt-mode
     php-mode
     web-mode
@@ -97,7 +98,9 @@
 (package-initialize)
 
 (when (not package-archive-contents)
-  (package-refresh-contents))
+  (package-refresh-contents)
+  (package-install 'use-package))
+(require 'use-package)
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
