@@ -1,6 +1,6 @@
 ;; Window Numbering
-(window-numbering-mode)
-(require 'window-numbering)
-
-(setq window-numbering-assign-func
-      (lambda () (when (equal (buffer-name) "*Calculator*") 5)))
+(use-package window-numbering
+  :init
+  (window-numbering-mode)
+  (setq window-numbering-assign-func
+        (lambda () (when (equal (buffer-name) "*Calculator*") 5))))

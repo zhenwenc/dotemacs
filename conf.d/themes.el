@@ -1,0 +1,10 @@
+;; Themes
+(use-package spacemacs-theme)
+(use-package cyberpunk-theme)
+(use-package zenburn-theme)
+(use-package ample-theme)
+(use-package ample-zen-theme)
+(use-package color-theme-sanityinc-tomorrow)
+(use-package atom-one-dark-theme)
+(use-package solarized-theme)
+(use-package monokai-theme)

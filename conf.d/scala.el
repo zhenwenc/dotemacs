@@ -7,7 +7,6 @@
 ;; (autoload 'ensime-scala-mode-hook "ensime-mode")
 ;; (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
-;; Fancy unicode arrows
 (defun right-arrow ()
   (interactive)
   (cond ((looking-back "=")
@@ -37,9 +36,13 @@
          (company-keywords company-dabbrev-code company-gtags company-yasnippet))))
 
 (use-package scala-mode2
+  :ensure t
+  :ensure smartparens
+  :pin melpa-stable
   :init
   (setq show-trailing-whitespace t)
   (setq scala-indent:use-javadoc-style t)
+  (add-hook 'scala-mode-hook 'helm-gtags-mode)
   :config
   (require 'company 'company-mode)
   (require 'smartparens)

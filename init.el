@@ -8,11 +8,6 @@
 
 (setq inhibit-startup-screen t)
 
-; (global-set-key (kbd "C-s") 'isearch-forward-regexp)
-; (global-set-key (kbd "C-r") 'isearch-backward-regexp)
-; (global-set-key (kbd "C-M-s") 'isearch-forward)
-; (global-set-key (kbd "C-M-r") 'isearch-backward)
-
 (show-paren-mode 1)
 (setq-default indent-tabs-mode nil)
 (setq x-select-enable-clipboard t
@@ -40,7 +35,6 @@
     helm-gtags
     magit
     projectile
-    multiple-cursors
     ace-jump-mode
     autopair
     company
@@ -49,8 +43,6 @@
     geiser
     org
     bm
-    highlight-indentation
-    highlight-symbol
     markdown-mode+
     nrepl-eval-sexp-fu
     nyan-mode
@@ -61,46 +53,36 @@
     exec-path-from-shell
     zencoding-mode
     ack
-    scala-mode2
-    ensime
-    smartparens
-    sbt-mode
     php-mode
     web-mode
     go-mode
     dockerfile-mode
     puppet-mode
     powerline
-    diminish
-    whitespace-cleanup-mode
-    window-numbering
-    spacemacs-theme
-    cyberpunk-theme
-    zenburn-theme
-    ample-theme
-    ample-zen-theme
-    color-theme-sanityinc-tomorrow
-    atom-one-dark-theme
-    solarized-theme
-    monokai-theme))
+    whitespace-cleanup-mode))
 
 (when (boundp 'package-pinned-packages)
   (setq package-pinned-packages
-        '((scala-mode2        . "melpa-stable")
-          (go-mode            . "melpa-stable")
+        '((go-mode            . "melpa-stable")
           (rainbow-delimiters . "melpa-stable")
           (flycheck           . "melpa-stable")
-          (ensime             . "melpa-stable")
           (helm               . "melpa")
           (helm-projectile    . "melpa")
           (projectile         . "melpa"))))
 
 (package-initialize)
 
+;; install use-package
 (when (not package-archive-contents)
   (package-refresh-contents)
   (package-install 'use-package))
-(require 'use-package)
+
+;; use-package is not required at runtime
+(eval-when-compile
+ (require 'use-package))
+;; (require 'diminish)
+(require 'bind-key)
+(setq use-package-always-ensure t)
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))

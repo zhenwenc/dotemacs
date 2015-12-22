@@ -32,10 +32,10 @@
 (helm-mode 1)
 
 ;; customize
-;(custom-set-variables
-; '(helm-gtags-ignore-case t)
-; '(helm-gtags-auto-update t)
-; '(helm-gtags-suggested-key-mapping t))
+(custom-set-variables
+ '(helm-gtags-ignore-case t)
+ '(helm-gtags-auto-update t)
+ '(helm-gtags-suggested-key-mapping t))
 
 ;; key bindings
 ;(eval-after-load "helm-gtags"
