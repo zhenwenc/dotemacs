@@ -93,3 +93,8 @@
 ;; (global-set-key (kbd "C-s")                        'isearch-forward-regexp)
 (define-key isearch-mode-map (kbd "M-v")           'isearch-yank-pop)
 (define-key isearch-mode-map (kbd "M-<backspace>") 'isearch-delete-char)
+
+;; Visible bookmark
+;; (global-set-key (kbd "C-x r m")         'bm-toggle)
+;; (global-set-key (kbd "C-x r l")         'bm-show-all)
+;; (global-set-key (kbd "C-x r b")         'bm-next)

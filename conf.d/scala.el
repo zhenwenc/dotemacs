@@ -5,7 +5,13 @@
 ;; Scala Ensime Mode
 ;; (require 'ensime)
 (autoload 'ensime-scala-mode-hook "ensime-mode")
-(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+;; (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+
+(add-hook 'ensime-mode-hook
+          (lambda ()
+            (set (make-local-variable 'company-backends)
+                 '(ensime-company
+                   (company-keywords company-dabbrev-code company-gtags company-yasnippet)))))
 
 
 ;; Fancy unicode arrows
@@ -29,6 +35,7 @@
 			      (local-set-key (kbd "-") 'left-arrow)
 			      (local-set-key (kbd ">") 'right-arrow)))
 
+;; Ensime auto suggest dropdown
 ;; (defun scala/completing-dot ()
 ;;   "Insert a period and show company completions."
 ;;   (interactive "*")

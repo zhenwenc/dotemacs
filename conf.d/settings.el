@@ -3,7 +3,7 @@
   (exec-path-from-shell-initialize))
 
 ;; Color theme
-(load-theme 'atom-one-dark t)
+(load-theme 'monokai t)
 
 ;  (setq evil-default-cursor t)
 
@@ -153,6 +153,13 @@
 ;; Keep isearch highlight, and use a keybinding to clear it manually
 (setq lazy-highlight-cleanup nil)
 (global-set-key (kbd "C-&") 'lazy-highlight-cleanup)
+
+;; Highlight symbol
+(require 'highlight-symbol)
+(setq highlight-symbol-idle-delay 0.35)
+(define-globalized-minor-mode global-highlight-symbol-mode highlight-symbol-mode
+  (lambda () (highlight-symbol-mode 1)))
+(global-highlight-symbol-mode 1)
 
 ;; Nyan da cat!!
 (require 'nyan-mode)

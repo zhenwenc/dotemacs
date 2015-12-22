@@ -7,6 +7,8 @@
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
 (global-unset-key (kbd "C-x c"))
 
+(global-set-key (kbd "C-x m") 'helm-all-mark-rings)
+
 ; rebind tab to run persistent action
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
 ; make TAB works in terminal
