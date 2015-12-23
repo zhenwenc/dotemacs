@@ -7,7 +7,10 @@
 ;; (autoload 'ensime-scala-mode-hook "ensime-mode")
 ;; (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
-(defun right-arrow ()
+(custom-set-variables
+ '(helm-gtags-suggested-key-mapping f))
+
+(defun scala-right-arrow ()
   (interactive)
   (cond ((looking-back "=")
          (backward-delete-char 1) (insert "⇒"))
@@ -15,12 +18,18 @@
 	 (backward-delete-char 1) (insert "→"))
 	(t (insert ">"))))
 
-(defun left-arrow ()
+(defun scala-left-arrow ()
   (interactive)
   (if (looking-back "<")
       (progn (backward-delete-char 1)
 	     (insert "←"))
     (insert "-")))
+
+(defun scala-newline-and-indent ()
+  "What you want me to explain?"
+  (interactive)
+  (newline-and-indent)
+  (scala-indent:insert-asterisk-on-multiline-comment))
 
 (defun ensime-edit-definition-with-fallback ()
   "Variant of `ensime-edit-definition` with ctags if ENSIME is not available."
@@ -35,49 +44,38 @@
        '(ensime-company
          (company-keywords company-dabbrev-code company-gtags company-yasnippet))))
 
-(defun scala-newline-and-indent ()
-  "My Scala newline and indent"
-  (interactive)
-  (newline-and-indent)
-  (scala-indent:insert-asterisk-on-multiline-comment))
-
-(defun scala-mode-keybinding-hook ()
-  "My Scala mode keybinding hook"
-  (interactive)
-  (local-set-key (kbd "-") 'left-arrow)
-  (local-set-key (kbd ">") 'right-arrow)
-  (local-set-key (kbd "RET") 'scala-newline-and-indent))
-
 (use-package scala-mode
   :ensure t
+  :ensure scala-mode2
   :ensure smartparens
+  :mode "\\.scala\\'"
   :pin melpa-stable
   :bind (:map scala-mode-map
-              ("-" . left-arrow)
-              (">" . right-arrow))
+              ("-" . scala-left-arrow)
+              (">" . scala-right-arrow)
+              ("RET" . scala-newline-and-indent))
   :init
+  (require 'scala-mode2)
   (setq show-trailing-whitespace t)
   (setq scala-indent:use-javadoc-style t)
-  (add-hook 'scala-mode-hook 'helm-gtags-mode)
   :config
   (require 'company 'company-mode)
-  (require 'smartparens))
-
-(use-package scala-mode2)
+  (require 'smartparens)
+  (add-hook 'scala-mode-hook 'helm-gtags-mode))
 
 (use-package ensime
   :ensure t
   :pin melpa-stable
-;;  :bind (:map ensime-mode-map
-;;              ("M-." . 'ensime-edit-definition-with-fallback)
-;;              ("M-," . 'pop-tag-mark))
+  :bind (:map ensime-mode-map
+              ("M-." . ensime-edit-definition-with-fallback)
+              ("M-," . pop-tag-mark))
   :init
   (setq show-trailing-whitespace t)
   (setq ensime-default-buffer-prefix "ENSIME-"
         ensime-prefer-noninteractive t)
-  (add-hook 'ensime-mode-hook 'ensime-set-company-backend)
   :config
-  (ensime-mode 1))
+  (ensime-mode 1)
+  (add-hook 'ensime-mode-hook 'ensime-set-company-backend))
 
 ;; Ensime auto suggest dropdown
 ;; (defun scala/completing-dot ()
