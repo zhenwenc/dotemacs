@@ -153,8 +153,3 @@
 ;; Keep isearch highlight, and use a keybinding to clear it manually
 (setq lazy-highlight-cleanup nil)
 (global-set-key (kbd "C-&") 'lazy-highlight-cleanup)
-
-;; Nyan da cat!!
-(require 'nyan-mode)
-(nyan-mode 1)
-(nyan-start-animation)

@@ -46,6 +46,9 @@
 (eval-after-load "ensime"
   '(diminish 'ensime-mode " Ⓔ"))
 
+(eval-after-load "highlight-symbol"
+  '(diminish 'highlight-symbol-mode " Ⓢ"))
+
 ; (with-eval-after-load 'ensime
 ;   (assq-delete-all 'ensime-mode minor-mode-alist)
 ;   (add-to-list 'minor-mode-alist '(ensime-mode " Ⓔ")))
