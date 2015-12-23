@@ -35,37 +35,49 @@
        '(ensime-company
          (company-keywords company-dabbrev-code company-gtags company-yasnippet))))
 
-(use-package scala-mode2
+(defun scala-newline-and-indent ()
+  "My Scala newline and indent"
+  (interactive)
+  (newline-and-indent)
+  (scala-indent:insert-asterisk-on-multiline-comment))
+
+(defun scala-mode-keybinding-hook ()
+  "My Scala mode keybinding hook"
+  (interactive)
+  (local-set-key (kbd "-") 'left-arrow)
+  (local-set-key (kbd ">") 'right-arrow)
+  (local-set-key (kbd "RET") 'scala-newline-and-indent))
+
+(use-package scala-mode
   :ensure t
   :ensure smartparens
   :pin melpa-stable
+  :bind (:map scala-mode-map
+              ("-" . left-arrow)
+              (">" . right-arrow))
   :init
   (setq show-trailing-whitespace t)
   (setq scala-indent:use-javadoc-style t)
   (add-hook 'scala-mode-hook 'helm-gtags-mode)
   :config
   (require 'company 'company-mode)
-  (require 'smartparens)
-  (local-set-key (kbd "-") 'left-arrow)
-  (local-set-key (kbd ">") 'right-arrow)
-  (define-key scala-mode-map (kbd "RET")
-    (lambda ()
-      (interactive)
-      (newline-and-indent)
-      (scala-indent:insert-asterisk-on-multiline-comment))))
+  (require 'smartparens))
+
+(use-package scala-mode2)
 
 (use-package ensime
   :ensure t
   :pin melpa-stable
+;;  :bind (:map ensime-mode-map
+;;              ("M-." . 'ensime-edit-definition-with-fallback)
+;;              ("M-," . 'pop-tag-mark))
   :init
   (setq show-trailing-whitespace t)
   (setq ensime-default-buffer-prefix "ENSIME-"
         ensime-prefer-noninteractive t)
   (add-hook 'ensime-mode-hook 'ensime-set-company-backend)
   :config
-  (ensime-mode 1)
-  (define-key ensime-mode-map (kbd "M-.") 'ensime-edit-definition-with-fallback)
-  (define-key ensime-mode-map (kbd "M-,") 'pop-tag-mark))
+  (ensime-mode 1))
 
 ;; Ensime auto suggest dropdown
 ;; (defun scala/completing-dot ()
