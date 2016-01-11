@@ -2,9 +2,6 @@
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
-;; Color theme
-(load-theme 'monokai t)
-
 ;  (setq evil-default-cursor t)
 
 ;; Setting fonts for GUI emacs

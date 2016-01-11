@@ -7,9 +7,6 @@
 ;; (autoload 'ensime-scala-mode-hook "ensime-mode")
 ;; (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
-(custom-set-variables
- '(helm-gtags-suggested-key-mapping f))
-
 (defun scala-right-arrow ()
   (interactive)
   (cond ((looking-back "=")
@@ -37,6 +34,13 @@
   (if (ensime-connection-or-nil)
       (ensime-edit-definition)
     (helm-gtags-find-tag-from-here)))
+
+(defun ensime-pop-stack-with-fallback ()
+  "Variant of `pop-tag-mark` with ctags if ENSIME is not available."
+  (interactive)
+  (if (ensime-connection-or-nil)
+      (pop-tag-mark)
+    (helm-gtags-pop-stack)))
 
 (defun ensime-set-company-backend ()
   "Company backend for ctags if ENSIME is not available."
@@ -68,7 +72,7 @@
   :pin melpa-stable
   :bind (:map ensime-mode-map
               ("M-." . ensime-edit-definition-with-fallback)
-              ("M-," . pop-tag-mark))
+              ("M-," . ensime-pop-stack-with-fallback))
   :init
   (setq show-trailing-whitespace t)
   (setq ensime-default-buffer-prefix "ENSIME-"
