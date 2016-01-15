@@ -14,7 +14,7 @@
   (define-globalized-minor-mode global-highlight-symbol-mode highlight-symbol-mode
     (lambda ()
       (when (not (memq major-mode
-                       (list 'magit-status-mode `magit-diff-mode)))
+                       (list 'magit-status-mode 'magit-diff-mode 'magit-popup-mode)))
         (highlight-symbol-mode 1))))
   (global-highlight-symbol-mode 1))
 
